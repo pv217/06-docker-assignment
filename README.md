@@ -28,6 +28,7 @@ Containerization is a lightweight alternative to full machine virtualization tha
 - **Consistency** - Containers ensure that the software runs in the same environment, regardless of where it is deployed.
 - **Isolation** - Containers are isolated from each other and the host system.
 - **Scalability** - Containers can be easily scaled up or down.
+- **Security** - Containers provide a level of security by isolating the application from the host system.
 
 ### Docker
 
@@ -39,7 +40,7 @@ A Docker image is a file that contains all the necessary dependencies and config
 
 #### Docker container
 
-A container is a runtime instance of a Docker image. This means it is a running instance of the containerized application. Containers can be run, started, stopped, moved, and deleted. When containers are deleted, any data that is not in a volume is lost.
+A container is a runtime instance of a Docker image. This means it is a running instance of the containerized application. Containers can be run, started, stopped, moved, and deleted. When containers are deleted, any data which are not persisted outside the container are lost.
 
 #### Docker volume
 
@@ -47,11 +48,11 @@ A Docker volume is a directory that is outside the lifecycle of the container. I
 
 #### Docker engine
 
-The Docker engine is the core of Docker. It is a client-server application that builds and runs containers.
+The Docker engine is the core of Docker. It is a client-server daemon that builds and runs containers.
 
-#### Dockerhub
+#### DockerHub
 
-Dockerhub is a cloud-based registry service that allows you to select images from a wide range of applications and base images. You can also upload your own images to the registry.
+DockerHub is a cloud-based registry service that allows you to select images from a wide range of applications and base images. You can also upload your own images to the registry.
 
 #### Dockerfile
 
@@ -140,7 +141,7 @@ services: # List of services that will be run
       - "8077:8077" # Maps the port 8077 from the container to the port 8077 on the host
     environment: # Environment variables that will be used in the service
       QUARKUS_DATASOURCE_DB_KIND: postgresql # Variables used in our case in application.properties
-      QUARKUS_DATASOURCE_USERNAME: user 
+      QUARKUS_DATASOURCE_USERNAME: user
       QUARKUS_DATASOURCE_PASSWORD: password
       QUARKUS_DATASOURCE_REACTIVE_URL: vertx-reactive:postgresql://baggage-db:5432/baggage-database # URL for the database using docker network alias
     depends_on: # Services that this service depends on
@@ -303,10 +304,12 @@ Check if everything is running.
 1. Finish the tasks
 2. Push the changes to the main branch
 3. GitHub Classroom automatically prepared a feedback pull request for you
-4. Go to the repository on GitHub and find the feedback pull request
-5. Set label to "Submitted"
-6. GitHub Actions will run basic checks for your submission
-7. Teacher will evaluate the submission as well and give you feedback
+4. GitHub Actions will run basic checks for your submission on push
+5. Teacher will evaluate the submission as well and give you feedback
+
+Resubmit the solution if the checks fail:
+1. Make changes
+2. Push again
 
 ## Hints
 
@@ -319,3 +322,4 @@ Check if everything is running.
 ## Further reading
 
 - https://quarkus.io/guides/rest-client-reactive
+- https://quarkus.io/guides/podman
